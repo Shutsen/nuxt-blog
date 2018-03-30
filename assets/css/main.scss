@@ -10,6 +10,6 @@ body {
   margin: 0;
 }
 
-ul li.active {
-  background-color: $main-bg-color;
+.nuxt-link-active, .next-link-active:hover {
+  background-color: $main-bg-color !important;
 }
