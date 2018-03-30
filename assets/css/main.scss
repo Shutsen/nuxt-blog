@@ -1,0 +1,15 @@
+$main-bg-color: #adadad;
+$main-font-color: #222;
+$accent-font-color: #5e94d3;
+
+html
+{
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+  margin: 0;
+}
+
+ul li.active {
+  background-color: $main-bg-color;
+}
