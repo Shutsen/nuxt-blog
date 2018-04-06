@@ -12,7 +12,7 @@
         </div>
       </div>
     </section>
-    <FeaturedPosts/>
+    <FeaturedPosts :posts="loadedPosts"/>
   </div>
 </template>
 
@@ -21,6 +21,11 @@ import FeaturedPosts from '~/components/Posts/FeaturedPosts'
 export default {
   components: {
     FeaturedPosts
+  },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
 }
 </script>

@@ -4,7 +4,7 @@
       <h1 class="title is-1">Blog Page</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deserunt quam, facere officia temporibus minima quaerat optio reprehenderit excepturi laudantium nostrum natus incidunt repellat nobis labore corporis inventore, id fugiat?</p>
     </div>
-    <FeaturedPosts/>
+    <FeaturedPosts :posts="loadedPosts"/>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ import FeaturedPosts from '~/components/Posts/FeaturedPosts'
 export default {
   components: {
     FeaturedPosts
+  },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
 }
 </script>

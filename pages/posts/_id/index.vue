@@ -1,17 +1,30 @@
 <template>
   <div class="post">
     <div class="post-image">
-      <div class="img" style="background: url('https://images.unsplash.com/photo-1422004707501-e8dad229e17a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f1cd6d15b82e723511ababedce1c7625&w=1000&q=80') center center / cover no-repeat; "></div>
+      <div class="img" :style="`background: url('${loadedPost.image}') center center / cover no-repeat; `"></div>
     </div>
-    <h1 class="post-title">POST TITLE</h1>
-    <h4 class="tags">space travel</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur in fuga consequatur sunt laboriosam esse culpa eum aspernatur, possimus amet. Porro velit eligendi beatae quae! Doloribus minima debitis aliquid?</p>
+    <h1 class="post-title">{{loadedPost.title}}</h1>
+    <h4 class="tags">{{loadedPost.tags}}</h4>
+    <p>{{loadedPost.content}}</p>
   </div>
 </template>
 
 <script>
 export default {
-  
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: 1,
+          image: 'https://images.unsplash.com/photo-1422004707501-e8dad229e17a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f1cd6d15b82e723511ababedce1c7625&w=1000&q=80',
+          tags: 'space travel mars',
+          title: `SPACE TRAVEL - ID: ${context.params.id}`,
+          excerpt: 'SUMMARY OF CONTENT OF THE POST',
+          content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi consectetur in fuga consequatur sunt laboriosam esse culpa eum aspernatur, possimus amet. Porro velit eligendi beatae quae! Doloribus minima debitis aliquid?'
+        }
+      })
+    }, 1000)
+  }
 }
 </script>
 

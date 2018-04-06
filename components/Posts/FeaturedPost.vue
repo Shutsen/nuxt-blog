@@ -1,17 +1,17 @@
 <template>
-  <div class="column" :key="id">
+  <div class="column">
     <div class="single-post-page">
       <div class="image">
         <nuxt-link :to="postLink">
-          <div class="img" :style="{ background: `url('${image}') center center / cover no-repeat; `}"></div>
+          <div class="img" :style="{ background: `url('${post.image}') center center / cover no-repeat; `}"></div>
         </nuxt-link>
       </div>
       <div class="content">
-        <h4 class="tags">{{tags}}</h4>
+        <h4 class="tags">{{post.tags}}</h4>
         <nuxt-link :to="postLink">
-          <h2 class="post-title">{{title}}</h2>
+          <h2 class="post-title">{{post.title}}</h2>
         </nuxt-link>
-        <p>{{excerpt}}</p>
+        <p>{{post.excerpt}}</p>
       </div>
     </div>
   </div>
@@ -20,34 +20,18 @@
 <script>
 export default {
   props: {
-    id: {
-      required: true,
-      type: String
-    },
-    title: {
-      required: true,
-      type: String
-    },
-    excerpt: {
-      required: true,
-      type: String
-    },
-    image: {
-      required: true,
-      type: String
-    },
-    tags: {
-      required: true,
-      type: String
-    },
     isAdmin: {
       required: true,
       type: Boolean
+    },
+    post: {
+      required: true,
+      type: Object
     }
   },
   computed: {
     postLink() {
-      return this.isAdmin ? '/admin/' + this.id : '/posts/' + this.id
+      return this.isAdmin ? '/admin/' + this.post.id : '/posts/' + this.post.id
     }
   }
 }
