@@ -11,8 +11,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^1.0.0",
-    "@nuxtjs/bulma": "^1.0.3"
+    "@nuxtjs/bulma": "^1.0.3",
+    "axios": "^0.18.0",
+    "nuxt": "^1.0.0"
   },
   "devDependencies": {
     "cross-env": "^5.0.1",

@@ -3,7 +3,7 @@
     <div class="single-post-page">
       <div class="image">
         <nuxt-link :to="postLink">
-          <div class="img" :style="{ background: `url('${post.image}') center center / cover no-repeat; `}"></div>
+          <div class="img" :style="{ background: `url('${post.image}') center center / cover no-repeat;`}"></div>
         </nuxt-link>
       </div>
       <div class="content">

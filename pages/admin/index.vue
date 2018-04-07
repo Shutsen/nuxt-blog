@@ -16,7 +16,7 @@
     <hr>
     <section class="existing-posts">
       <h2 class="title is-2 has-text-centered">Edit Existing Posts</h2>
-      <FeaturedPosts isAdmin/>
+      <FeaturedPosts :posts="loadedPosts" isAdmin/>
     </section>
     </div>
 </template>
@@ -24,10 +24,15 @@
 <script>
 import FeaturedPosts from '@/components/Posts/FeaturedPosts'
 export default {
+  layout: 'admin',
   components: {
     FeaturedPosts
   },
-  layout: 'admin'
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
+  }
 }
 </script>
 

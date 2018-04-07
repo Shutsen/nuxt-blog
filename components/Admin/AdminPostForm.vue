@@ -15,9 +15,16 @@
       </div>
 
       <div class="field">
-        <label class="label">The Post</label>
+        <label class="label">Your Post</label>
         <div class="control">
-          <textarea class="textarea" rows="4" placeholder="Add your post content here" v-model="newPost.excerpt"></textarea>
+          <textarea class="textarea" rows="4" placeholder="Add your post content here" v-model="newPost.content"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Excerpt</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Add the excerpt of the post" v-model="newPost.excerpt" >
         </div>
       </div>
 
@@ -28,22 +35,11 @@
         </div>
       </div>
 
-      <label class="label">Add the post image</label>
-      <div class="file has-name is-fullwidth">
-        <label class="file-label">
-          <input class="file-input" type="file" name="resume">
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fas fa-upload"></i>
-            </span>
-            <span class="file-label">
-              Choose a file…
-            </span>
-          </span>
-          <span class="file-name">
-            To be made dynamic
-          </span>
-        </label>
+      <div class="field">
+        <label class="label">Image</label>
+        <div class="control">
+          <input class="input" type="text" v-model="newPost.image" placeholder="Add your image please">
+        </div>
       </div>
 
       <hr>
@@ -73,6 +69,7 @@ export default {
         author: '',
         title: '',
         image: '',
+        content: '',
         excerpt: '',
         tags: ''
       }
@@ -81,7 +78,7 @@ export default {
   methods: {
     onSave() {
       // save the new post
-      console.log(this.newPost)
+      this.$emit('submit', this.newPost)
     },
     onCancel() {
       this.$router.push('/admin')
