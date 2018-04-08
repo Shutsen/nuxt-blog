@@ -13,3 +13,11 @@ body {
 .nuxt-link-active, .next-link-active:hover {
   background-color: $main-bg-color !important;
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave {
+  opacity: 0;
+}

@@ -20,7 +20,7 @@ const createStore = () => {
     },
     actions: {
       nuxtServerInit(vuexContext, context) {
-        return axios.get('https://nuxt-blog-a3a65.firebaseio.com/posts.json')
+        return axios.get(`${process.env.baseUrl}/posts.json`)
           .then(res => {
             const postsArray = []
             for (const key in res.data) {
@@ -38,7 +38,7 @@ const createStore = () => {
           ...postData,
           updatedDate: new Date()
         }
-        return axios.post('https://nuxt-blog-a3a65.firebaseio.com/posts.json', createdPost)
+        return axios.post(`${process.env.baseUrl}/posts.json`, createdPost)
         .then(res => {
             // the id of the post will be assigned by the backend. This can be accessed via the 'res.data.name'
             vuexContext.commit('addPost', {...createdPost, id: res.data.name})
@@ -46,7 +46,7 @@ const createStore = () => {
         .catch(e => console.log(e))
       },
       editPost(vuexContext, postData) {
-        return axios.put(`https://nuxt-blog-a3a65.firebaseio.com/posts/${postData.id}.json`, postData)
+        return axios.put(`${process.env.baseUrl}/posts/${postData.id}.json`, postData)
           .then(res => {
             vuexContext.commit('editPost', postData)
           })

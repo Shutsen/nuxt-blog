@@ -28,7 +28,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '@/assets/css/main.scss'
+    '~/assets/css/main.scss'
   ],
 
   /*
@@ -64,5 +64,12 @@ module.exports = {
     extend(config, ctx) {
       
     }
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-a3a65.firebaseio.com'
+  },
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   }
 }
