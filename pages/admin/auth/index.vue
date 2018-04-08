@@ -1,25 +1,25 @@
 <template>
   <div class="admin-auth-page">
     <h1 class="title is-1">Please login or sign up.</h1>
-    <form action="">
+    <form @submit.prevent="onSubmit">
       <div class="field">
         <label class="label">E-mail Address</label>
         <div class="control">
-          <input class="input" type="email" placeholder="Enter your email">
+          <input class="input" type="email" v-model="email" placeholder="Enter your email">
         </div>
       </div>
       <div class="field">
         <label class="label">Password</label>
         <div class="control">
-          <input class="input" type="password" placeholder="Enter your password">
+          <input class="input" type="password" v-model="password" placeholder="Enter your password">
         </div>
       </div>
       <div class="field is-grouped">
         <div class="control">
-          <button @click.prevent="isLogin = !isLogin" class="button is-light">Switch to {{ isLogin ? 'Sign Up' : 'Login '}}</button>
+          <button class="button is-link">{{ isLogin ? 'Login' : 'Sign Up' }}</button>
         </div>
         <div class="control">
-          <button class="button is-link">{{ isLogin ? 'Login' : 'Sign Up' }}</button>
+          <button @click.prevent="isLogin = !isLogin" class="button is-light">Switch to {{ isLogin ? 'Sign Up' : 'Login '}}</button>
         </div>
       </div>
     </form>
@@ -27,13 +27,27 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
-      isLogin: true
+      isLogin: true,
+      email: '',
+      password: ''
     }
   },
-  layout: 'admin'
+  layout: 'admin',
+  methods: {
+    onSubmit() {
+      this.$store.dispatch('authenticateUser', {
+        isLogin: this.isLogin,
+        email: this.email,
+        password: this.password
+      }).then(() => {
+        this.$router.push('/admin')
+      })
+    }
+  }
 }
 </script>
 

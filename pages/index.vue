@@ -19,6 +19,7 @@
 <script>
 import FeaturedPosts from '~/components/Posts/FeaturedPosts'
 export default {
+  middleware: 'log',
   components: {
     FeaturedPosts
   },

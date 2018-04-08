@@ -25,6 +25,7 @@
 import FeaturedPosts from '@/components/Posts/FeaturedPosts'
 export default {
   layout: 'admin',
+  middleware: 'auth',
   components: {
     FeaturedPosts
   },

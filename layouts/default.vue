@@ -10,6 +10,7 @@
 <script>
 import TheHeader from '~/components/TheHeader'
 export default {
+  // middleware: 'log',
   components: {
     TheHeader
   }
