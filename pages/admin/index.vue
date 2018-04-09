@@ -5,7 +5,7 @@
       <section class="new-post">
         <div class="field is-grouped">
         <div class="control">
-          <button @click="$router.push('/')" class="button is-light">Log out</button>
+          <button @click="onLogout" class="button is-light">Log out</button>
         </div>
         <div class="control">
           <button @click="$router.push('/admin/new-post')" class="button is-primary">Create new Post</button>
@@ -25,13 +25,19 @@
 import FeaturedPosts from '@/components/Posts/FeaturedPosts'
 export default {
   layout: 'admin',
-  middleware: 'auth',
+  middleware: ['check-auth', 'auth'],
   components: {
     FeaturedPosts
   },
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts
+    }
+  },
+  methods: {
+    onLogout() {
+      this.$store.dispatch('logout')
+      this.$router.push('/')
     }
   }
 }
